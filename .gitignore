@@ -1,0 +1,96 @@
+# Build output
+bin/
+obj/
+out/
+artifacts/
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.suo
+*.rsuser
+
+# Visual Studio Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Test output
+TestResults/
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+Thumbs.db
+Desktop.ini
+
+# OS generated files
+.DS_Store
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+
+appsettings.Local.json
+appsettings.Development.local.json
+secrets.json
+
+# Home Assistant credentials
+ha-token.txt
+homeassistant-token.txt
+
+# Generated Windows packages
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_package/
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+*.appxsym
+*.msixsym
+*.appxupload
+*.msixupload
+
+# Signing certificates and private keys
+*.pfx
+*.p12
+*.cer
+*.key
+*.pem
+
+# Publish output
+publish/
+
+# Do NOT ignore these PowerToys / Windows App SDK deployment files:
+#
+# Properties/launchSettings.json
+# Properties/PublishProfiles/*.pubxml
+#
+# They are intentionally kept under version control.
