@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "ha_palette (Package)": {
+      "commandName": "MsixPackage",
+      "doNotLaunchApp": true
+    },
+    "ha_palette (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
