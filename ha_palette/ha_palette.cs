@@ -7,16 +7,16 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Microsoft.CommandPalette.Extensions;
 
-namespace ha_palette;
+namespace HaPalette;
 
 [Guid("5bcf3775-c895-408d-bd88-f83608bd6d1e")]
-public sealed partial class ha_palette : IExtension, IDisposable
+public sealed partial class HaPalette : IExtension, IDisposable
 {
     private readonly ManualResetEvent _extensionDisposedEvent;
 
-    private readonly ha_paletteCommandsProvider _provider = new();
+    private readonly HaPaletteCommandsProvider _provider = new();
 
-    public ha_palette(ManualResetEvent extensionDisposedEvent)
+    public HaPalette(ManualResetEvent extensionDisposedEvent)
     {
         this._extensionDisposedEvent = extensionDisposedEvent;
     }

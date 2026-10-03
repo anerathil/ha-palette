@@ -5,24 +5,41 @@
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 
-namespace ha_palette;
+namespace HaPalette;
 
-public partial class ha_paletteCommandsProvider : CommandProvider
+public partial class HaPaletteCommandsProvider : CommandProvider
 {
     private readonly ICommandItem[] _commands;
 
-    public ha_paletteCommandsProvider()
+    public HaPaletteCommandsProvider()
     {
         DisplayName = "HA Palette";
         Icon = IconHelpers.FromRelativePath("Assets\\StoreLogo.png");
         _commands = [
-            new CommandItem(new ha_palettePage()) { Title = DisplayName },
+            new CommandItem(new HaPalettePage()) { Title = DisplayName },
         ];
     }
 
     public override ICommandItem[] TopLevelCommands()
     {
         return _commands;
+    }
+
+    public override ICommandItem[]? GetDockBands()
+    {
+        var item = new ListItem(new NoOpCommand())
+        {
+            Title = "HA",
+            Subtitle = "21.5 °C"
+        };
+
+        var band = new WrappedDockItem(
+            [item],
+            "com.anerathil.hapalette.status",
+            "Home Assistant"
+        );
+
+        return [band];
     }
 
 }

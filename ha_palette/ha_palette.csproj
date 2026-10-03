@@ -1,18 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ha_palette</RootNamespace>
+    <RootNamespace>HaPalette</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>HaPalette</AssemblyName>
 
     <WindowsSdkPackageVersion>10.0.26100.68-preview</WindowsSdkPackageVersion>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
+    <!-- x64 is the default when no Platform is supplied on the command line. -->
+    <Platform Condition="'$(Platform)' == 'AnyCPU'">x64</Platform>
 
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
+
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <NeutralLanguage>en-US</NeutralLanguage>
+
   </PropertyGroup>
 
   <ItemGroup>
@@ -91,6 +98,5 @@
     <!-- In release, also ignore the aforementioned ILLink warning -->
     <ILLinkTreatWarningsAsErrors>false</ILLinkTreatWarningsAsErrors>
   </PropertyGroup>
-
 
 </Project>

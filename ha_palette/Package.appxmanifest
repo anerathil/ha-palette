@@ -9,7 +9,7 @@
   IgnorableNamespaces="uap uap3 rescap">
 
   <Identity
-    Name="ha_palette"
+    Name="HaPalette"
     Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
     Version="0.0.1.0" />
   <!-- When you're ready to publish your extension, you'll need to change the
@@ -27,7 +27,7 @@
   </Dependencies>
 
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="en-US"/>
   </Resources>
 
   <Applications>
@@ -46,7 +46,7 @@
       <Extensions>
         <com:Extension Category="windows.comServer">
           <com:ComServer>
-            <com:ExeServer Executable="ha_palette.exe" Arguments="-RegisterProcessAsComServer" DisplayName="HA Palette">
+            <com:ExeServer Executable="HaPalette.exe" Arguments="-RegisterProcessAsComServer" DisplayName="HA Palette">
               <com:Class Id="5bcf3775-c895-408d-bd88-f83608bd6d1e" DisplayName="HA Palette" />
             </com:ExeServer>
           </com:ComServer>

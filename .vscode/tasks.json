@@ -1,41 +1,48 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/ha_palette/ha_palette.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary;ForceNoAlign"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/ha_palette/ha_palette.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary;ForceNoAlign"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "--project",
-                "${workspaceFolder}/ha_palette/ha_palette.csproj"
-            ],
-            "problemMatcher": "$msCompile"
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build HAPalette MSIX",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/ha_palette/ha_palette.csproj",
+        "-c",
+        "Debug",
+        "-p:Platform=x64",
+        "-p:GenerateAppxPackageOnBuild=true",
+        "-p:UapAppxPackageBuildMode=SideloadOnly",
+        "-p:AppxBundle=Never",
+        "-p:AppxPackageDir=${workspaceFolder}/AppPackages/"
+      ],
+      "problemMatcher": "$msCompile",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Install HAPalette MSIX",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "$pkg = Get-ChildItem '${workspaceFolder}/AppPackages' -Recurse -Filter *.msix | Sort-Object LastWriteTime -Descending | Select-Object -First 1; if (-not $pkg) { throw 'No MSIX package found' }; Write-Host ('Installing: ' + $pkg.FullName); Add-AppxPackage -Path $pkg.FullName -ForceUpdateFromAnyVersion"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Build + Install HAPalette",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Build HAPalette MSIX",
+        "Install HAPalette MSIX"
+      ],
+      "problemMatcher": []
+    }
+  ]
 }

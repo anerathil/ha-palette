@@ -5,11 +5,11 @@
 using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 
-namespace ha_palette;
+namespace HaPalette;
 
-internal sealed partial class ha_palettePage : ListPage
+internal sealed partial class HaPalettePage : ListPage
 {
-    public ha_palettePage()
+    public HaPalettePage()
     {
         Icon = IconHelpers.FromRelativePath("Assets\\StoreLogo.png");
         Title = "HA Palette";
